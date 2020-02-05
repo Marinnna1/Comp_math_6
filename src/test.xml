@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<MusicBands>
+  <MusicBand>
+      <name>Tanmay</name>
+      <Coordinates>
+        <x>1</x>
+        <y>2</y>
+      </Coordinates>
+      <numberOfParticipants>3</numberOfParticipants>
+      <singles>15</singles>
+      <genre>RAP</genre>
+      <Album>
+      <albumName>Patil</albumName>
+      <length>500</length>
+      </Album>
+  </MusicBand>
+  <MusicBand>
+      <name>Tanmay</name>
+      <Coordinates>
+        <x>3</x>
+        <y>4</y>
+      </Coordinates>
+      <numberOfParticipants>3</numberOfParticipants>
+      <singles>15</singles>
+      <genre>RAP</genre>
+      <Album>
+      <albumName>Patilw</albumName>
+      <length>503</length>
+      </Album>
+  </MusicBand>
+  <MusicBand>
+      <name>Tanmay</name>
+      <Coordinates>
+        <x>5</x>
+        <y>6</y>
+      </Coordinates>
+      <numberOfParticipants>3</numberOfParticipants>
+      <singles>15</singles>
+      <genre>RAP</genre>
+      <Album>
+      <albumName>Patile</albumName>
+      <length>506</length>
+      </Album>
+  </MusicBand>
+</MusicBands>
+
