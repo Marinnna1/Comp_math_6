@@ -32,10 +32,21 @@ public class Reader {
 
         Approximation[] functions = new Approximation[5];
         functions[0] = linearFunction;
-        functions[1] = powerFunction;
-        functions[2] = exponentialFunction;
-        functions[3] = logarithmicFunction;
-        functions[4] = quadraticFunction;
+        functions[1] = exponentialFunction;
+        functions[2] = quadraticFunction;
+        if(!Double.isNaN(powerFunction.getA())) {
+            functions[3] = powerFunction;
+        }
+        else {
+            functions[3] = null;
+        }
+        if(!Double.isNaN(logarithmicFunction.getA())) {
+            functions[4] = logarithmicFunction;
+        }
+        else {
+            functions[4] = null;
+        }
+
 
         Writer.printResults(functions);
     }
@@ -72,7 +83,7 @@ public class Reader {
             }
             catch (Exception ignored) {
             }
-        } while (count < 7);
+        } while (count < 3);
 
         String answer;
         String[] data;

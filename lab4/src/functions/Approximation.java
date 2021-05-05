@@ -1,6 +1,5 @@
 package functions;
 
-import java.text.DecimalFormat;
 
 public interface Approximation {
 
@@ -12,23 +11,14 @@ public interface Approximation {
 
     void calculate(double[] x, double[] y);
 
-    String getA();
+    double getA();
 
-    String getB();
+    double getB();
 
-    String getC();
+    double getC();
 
-    String getS();
+    double getS();
 
-    String getStandardDeviation();
-
-    default String parse(double number) {
-        String pattern = "##0.000";
-        DecimalFormat decimalFormat = new DecimalFormat(pattern);
-        if(decimalFormat.format(number).equals("-0,000")){
-            return decimalFormat.format(number).replace("-", "");
-        }
-        return decimalFormat.format(number);
-    }
+    double getStandardDeviation();
 
 }

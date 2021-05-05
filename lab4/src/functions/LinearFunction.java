@@ -4,11 +4,11 @@ import calculations.GaussMethod;
 
 public class LinearFunction implements Approximation {
 
-    private String a;
-    private String b;
-    private String s;
-    private String deviation;
-    private String r;
+    private double a;
+    private double b;
+    private double s;
+    private double deviation;
+    private double r;
 
     @Override
     public String getTypeOfFunction() {
@@ -22,12 +22,10 @@ public class LinearFunction implements Approximation {
 
     @Override
     public double calculateY(double x) {
-        double coefficientA = Double.parseDouble(a.replace(",", "."));
-        double coefficientB = Double.parseDouble(b.replace(",", "."));
-        return coefficientA * x + coefficientB;
+        return a * x + b;
     }
 
-    public String getCorrelationCoefficient() {
+    public double getCorrelationCoefficient() {
         return r;
     }
 
@@ -53,18 +51,17 @@ public class LinearFunction implements Approximation {
         array[1][2] = sy;
 
         double[] bounds = GaussMethod.solve(array);
-        a = parse(bounds[0]);
-        b = parse(bounds[1]);
+        a = bounds[0];
+        b = bounds[1];
 
         double e;
-        double sum = 0;
+        s = 0;
         for(int i = 0; i < x.length; i++) {
-            e = y[i] - (bounds[0] * x[i] + bounds[1]);
-            sum += Math.pow(e, 2);
+            e = y[i] - (a * x[i] + b);
+            s += Math.pow(e, 2);
         }
-        s = parse(sum);
 
-        deviation = parse(Math.sqrt(sum / n));
+        deviation = Math.sqrt(s / n);
 
         double meanX = sx / n;
         double meanY = sy / n;
@@ -80,33 +77,33 @@ public class LinearFunction implements Approximation {
         }
         denominator = Math.sqrt(denominatorX * denominatorY);
 
-        r = parse(numerator / denominator);
+        r = numerator / denominator;
 
     }
 
 
     @Override
-    public String getA() {
+    public double getA() {
         return a;
     }
 
     @Override
-    public String getB() {
+    public double getB() {
         return b;
     }
 
     @Override
-    public String getC() {
-        return "-";
+    public double getC() {
+        return 0;
     }
 
     @Override
-    public String getS() {
+    public double getS() {
         return s;
     }
 
     @Override
-    public String getStandardDeviation() {
+    public double getStandardDeviation() {
         return deviation;
     }
 }

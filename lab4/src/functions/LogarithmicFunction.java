@@ -5,10 +5,10 @@ import calculations.GaussMethod;
 
 public class LogarithmicFunction implements Approximation {
 
-    private String a;
-    private String b;
-    private String s;
-    private String deviation;
+    private double a;
+    private double b;
+    private double s;
+    private double deviation;
 
     @Override
     public String getTypeOfFunction() {
@@ -22,9 +22,7 @@ public class LogarithmicFunction implements Approximation {
 
     @Override
     public double calculateY(double x) {
-        double coefficientA = Double.parseDouble(a.replace(",", "."));
-        double coefficientB = Double.parseDouble(b.replace(",", "."));
-        return coefficientA * Math.log(x) + coefficientB;
+        return a * Math.log(x) + b;
     }
 
     @Override
@@ -51,43 +49,42 @@ public class LogarithmicFunction implements Approximation {
         array[1][2] = sy;
 
         double[] bounds = GaussMethod.solve(array);
-        a = parse(bounds[0]);
-        b = parse(bounds[1]);
+        a = bounds[0];
+        b = bounds[1];
 
         double e;
-        double sum = 0;
+        s = 0;
         for(int i = 0; i < x.length; i++) {
-            e = y[i] - (bounds[0] * Math.log(x[i]) + bounds[1]);
-            sum += Math.pow(e, 2);
+            e = y[i] - (a * Math.log(x[i]) + b);
+            s += Math.pow(e, 2);
         }
 
-        s = parse(sum);
 
-        deviation = parse(Math.sqrt(sum / n));
+        deviation = Math.sqrt(s / n);
     }
 
     @Override
-    public String getA() {
+    public double getA() {
         return a;
     }
 
     @Override
-    public String getB() {
+    public double getB() {
         return b;
     }
 
     @Override
-    public String getC() {
-        return "-";
+    public double getC() {
+        return 0;
     }
 
     @Override
-    public String getS() {
+    public double getS() {
         return s;
     }
 
     @Override
-    public String getStandardDeviation() {
+    public double getStandardDeviation() {
         return deviation;
     }
 }

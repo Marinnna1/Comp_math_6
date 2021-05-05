@@ -4,11 +4,11 @@ import calculations.GaussMethod;
 
 public class QuadraticFunction implements Approximation {
 
-    private String a;
-    private String b;
-    private String c;
-    private String s;
-    private String deviation;
+    private double a;
+    private double b;
+    private double c;
+    private double s;
+    private double deviation;
 
     @Override
     public String getTypeOfFunction() {
@@ -22,10 +22,7 @@ public class QuadraticFunction implements Approximation {
 
     @Override
     public double calculateY(double x) {
-        double coefficientA = Double.parseDouble(a.replace(",", "."));
-        double coefficientB = Double.parseDouble(b.replace(",", "."));
-        double coefficientC = Double.parseDouble(c.replace(",", "."));
-        return coefficientA * Math.pow(x, 2) + coefficientB * x + coefficientC;
+        return a * Math.pow(x, 2) + b * x + c;
     }
 
     @Override
@@ -67,44 +64,43 @@ public class QuadraticFunction implements Approximation {
         array[2][3] = sum_x2y;
 
         double[] bounds = GaussMethod.solve(array);
-        c = parse(bounds[0]);
-        b = parse(bounds[1]);
-        a = parse(bounds[2]);
+        c = bounds[0];
+        b = bounds[1];
+        a = bounds[2];
 
         double e;
-        double sum = 0;
+        s = 0;
         for(int i = 0; i < x.length; i++) {
-            e = y[i] - (bounds[0] + bounds[1] * x[i] + bounds[2] * Math.pow(x[i], 2));
-            sum += Math.pow(e, 2);
+            e = y[i] - (c + b * x[i] + a * Math.pow(x[i], 2));
+            s += Math.pow(e, 2);
         }
-        s = parse(sum);
 
-        deviation = parse(Math.sqrt(sum / n));
+        deviation = Math.sqrt(s / n);
 
     }
 
     @Override
-    public String getA() {
+    public double getA() {
         return a;
     }
 
     @Override
-    public String getB() {
+    public double getB() {
         return b;
     }
 
     @Override
-    public String getC() {
+    public double getC() {
         return c;
     }
 
     @Override
-    public String getS() {
+    public double getS() {
         return s;
     }
 
     @Override
-    public String getStandardDeviation() {
+    public double getStandardDeviation() {
         return deviation;
     }
 }

@@ -1,6 +1,5 @@
 package calculations;
 
-import java.text.DecimalFormat;
 
 public class GaussMethod {
 
@@ -38,7 +37,7 @@ public class GaussMethod {
 
 }
 
-    public static int getMaxElementIndex(int row) {
+    private static int getMaxElementIndex(int row) {
         double max = Math.abs(array[row][row]);
         int maxIndex = row;
 
@@ -51,7 +50,7 @@ public class GaussMethod {
         return maxIndex;
     }
 
-    public static void swapColumns(int firstColumn, int secondColumn) {
+    private static void swapColumns(int firstColumn, int secondColumn) {
         double[] tmp = new double[n + 1];
         if(firstColumn != secondColumn) {
             swap++;
@@ -70,7 +69,7 @@ public class GaussMethod {
         order[secondColumn] = temp;
     }
 
-    public static void changeLines(int row) {
+    private static void changeLines(int row) {
         double maxElement = array[row][row];
         double[] multipliers = new double[n - row - 1];
         for (int i = row + 1; i < n; i++) {
@@ -84,14 +83,12 @@ public class GaussMethod {
     }
 
 
-    public static double [] getResult() {
+    private static double [] getResult() {
 
         double[] [] tmp = new double[n][n+1];
 
         for(int i = 0; i < n ; i++) {
-            for(int j = 0 ; j< n+1; j++) {
-                tmp[i][j] = array[i][j];
-            }
+            if (n + 1 >= 0) System.arraycopy(array[i], 0, tmp[i], 0, n + 1);
         }
         double[] results = new double[n];
 
