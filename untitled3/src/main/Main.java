@@ -141,7 +141,7 @@ public class Main {
 
     private static void showGraphic() {
         Histogram histogram = new Histogram();
-        histogram.launch(Polygon.class, null);
+        histogram.launch(Histogram.class, null);
     }
 
 }
