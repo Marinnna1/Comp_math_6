@@ -6,8 +6,17 @@ import java.util.Arrays;
 
 public class Main {
 
-    static double[] selection = {1.07, -1.49, 0.11, 0.35, 1.07, -0.26, -0.35, 1.01, 0.28, -1.10,
-                                 1.59, -0.10, 1.18, -0.73, 0.31, -1.20, 0.73, -0.12, -1.32, -0.26};
+    static double[] selection = {37, 49, 43, 31, 44, 38, 40, 31, 28, 43,
+                                 32, 44, 47, 29, 51, 25, 43, 38, 41, 32,
+                                 38, 24, 49, 40, 32, 34, 31, 28, 37, 46,
+                                 41, 35, 43, 25, 37, 46, 38, 24, 41, 50,
+                                 38, 29, 41, 32, 34, 49, 44, 37, 31, 47,
+                                 50, 34, 25, 37, 40, 32, 35, 28, 44, 43,
+                                 46, 37, 41, 35, 29, 43, 38, 31, 26, 34,
+                                 49, 32, 46, 26, 38, 35, 40, 51, 37, 46,
+                                 37, 25, 40, 34, 24, 44, 32, 28, 34, 38,
+                                 44, 34, 29, 47, 37, 49, 43, 35, 47, 50 };
+
     public static double[] x;
     public static double[] y;
     public static double[] n;
@@ -17,8 +26,11 @@ public class Main {
 
         Arrays.sort(selection);
         System.out.println("¬ариационный р€д:");
-        for (double point : selection) {
-            System.out.print(point + "  ");
+        for (int i = 0; i < selection.length; i++) {
+            System.out.print(selection[i] + " ");
+            if((i + 1) % 10 == 0) {
+                System.out.println();
+            }
         }
         System.out.println();
         System.out.println("Ёкстремальные значени€ выборки: " + selection[0] + ", " + selection[selection.length - 1]);
